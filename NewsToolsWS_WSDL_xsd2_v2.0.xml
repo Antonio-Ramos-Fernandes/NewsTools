@@ -2,7 +2,7 @@
 <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tns="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices">
-    <xs:import schemaLocation="https://github.com/Antonio-Ramos-Fernandes/NewsTools.git/NewsToolsWS_WSDL_xsd3_v2.0.xml" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <xs:import schemaLocation="https://github.com/Antonio-Ramos-Fernandes/NewsTools/blob/master/NewsToolsWS_WSDL_xsd3_v2.0.xml" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
     <xs:complexType name="ListNewsIntranet">
         <xs:sequence>
             <xs:element name="listNewsField" nillable="true" type="tns:ArrayOfNewIntranet"/>
