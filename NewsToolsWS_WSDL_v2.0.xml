@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:tns="urn:MBCP/Intranet/WCF/NewsTools" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" name="Service" targetNamespace="urn:MBCP/Intranet/WCF/NewsTools" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:MBCP/Intranet/WCF/NewsTools/Imports">
+      <xsd:import schemaLocation="https://github.com/Antonio-Ramos-Fernandes/NewsTools.git/NewsToolsWS_WSDL_xsd0_v2.0.xml" namespace="urn:MBCP/Intranet/WCF/NewsTools" />
+      <xsd:import schemaLocation="https://github.com/Antonio-Ramos-Fernandes/NewsTools.git/NewsToolsWS_WSDL_xsd1_v2.0.xml" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://github.com/Antonio-Ramos-Fernandes/NewsTools.git/NewsToolsWS_WSDL_xsd2_v2.0.xml" namespace="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices" />
+      <xsd:import schemaLocation="https://github.com/Antonio-Ramos-Fernandes/NewsTools.git/NewsToolsWS_WSDL_xsd3_v2.0.xml" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+    <s:schema xmlns:tns="urn:/microsoft/multichannelframework/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:/microsoft/multichannelframework/" xmlns:s="http://www.w3.org/2001/XMLSchema">
+      <s:element name="AxisValues" type="tns:AxisValues" />
+      <s:element name="Sessions" type="tns:Sessions" />
+      <s:element name="BasicAuth" type="tns:BasicAuth" />
+      <s:complexType name="AxisValues">
+        <s:all>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="User" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="Solution" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SolutionUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BusinessTarget" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CommercialChannel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CommunicationsProtocol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="TransactionGUID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SessionGUID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ApplicationalUser" type="tns:ArrayOfApplicationalUser" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ApplicationalUserSystem" type="tns:ArrayOfApplicationalUserSystem" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SystemUser" type="tns:ArrayOfSystemUser" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SystemUserSystem" type="tns:ArrayOfSystemUserSystem" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="Proxy" type="s:int" />
+        </s:all>
+      </s:complexType>
+      <s:complexType name="BasicAuth">
+        <s:all>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="User" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="Pass" type="s:string" />
+        </s:all>
+      </s:complexType>
+      <s:complexType name="ArrayOfSystemUserSystem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Item" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfApplicationalUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Item" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfApplicationalUserSystem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Item" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSystemUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Item" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Sessions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Session" type="tns:Session" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Session">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SystemId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SessionId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="IService_GetListNewsIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListNewsIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetListNewsIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListNewsIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetImageOrVideo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageOrVideo" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetImageOrVideo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageOrVideoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetNewIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetNewIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPopupIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPopupIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPopupIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPopupIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_MailMeIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:MailMeIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_MailMeIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MailMeIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetSocialNewIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSocialNewIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetSocialNewIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSocialNewIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetLikeToNewIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetLikeToNewIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetLikeToNewIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetLikeToNewIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetCommentsByNewIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentsByNewIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetCommentsByNewIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentsByNewIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetCommentToNewIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetCommentToNewIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetCommentToNewIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetCommentToNewIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetHideCommentIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetHideCommentIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetHideCommentIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetHideCommentIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetAnswerToCommentIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetAnswerToCommentIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetAnswerToCommentIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetAnswerToCommentIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetLikeToCommentIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetLikeToCommentIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetLikeToCommentIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetLikeToCommentIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetViewsToNewIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetViewsToNewIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetViewsToNewIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetViewsToNewIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SendEmailIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendEmailIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_SendEmailIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendEmailIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SearchEmailIntranet_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchEmailIntranet" />
+  </wsdl:message>
+  <wsdl:message name="IService_SearchEmailIntranet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchEmailIntranetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllThemes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllThemes" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllThemes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllThemesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AxisValuesMsg">
+    <wsdl:part xmlns:q1="urn:/microsoft/multichannelframework/" name="AxisValuesMsgPart" element="q1:AxisValues" />
+  </wsdl:message>
+  <wsdl:message name="SessionsMsg">
+    <wsdl:part xmlns:q2="urn:/microsoft/multichannelframework/" name="SessionsMsgPart" element="q2:Sessions" />
+  </wsdl:message>
+  <wsdl:portType name="IService">
+    <wsdl:operation name="GetListNewsIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetListNewsIntranet" message="tns:IService_GetListNewsIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetListNewsIntranetResponse" message="tns:IService_GetListNewsIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageOrVideo">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetImageOrVideo" message="tns:IService_GetImageOrVideo_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetImageOrVideoResponse" message="tns:IService_GetImageOrVideo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetNewIntranet" message="tns:IService_GetNewIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetNewIntranetResponse" message="tns:IService_GetNewIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPopupIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetPopupIntranet" message="tns:IService_GetPopupIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetPopupIntranetResponse" message="tns:IService_GetPopupIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MailMeIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/MailMeIntranet" message="tns:IService_MailMeIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/MailMeIntranetResponse" message="tns:IService_MailMeIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSocialNewIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetSocialNewIntranet" message="tns:IService_GetSocialNewIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetSocialNewIntranetResponse" message="tns:IService_GetSocialNewIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetLikeToNewIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SetLikeToNewIntranet" message="tns:IService_SetLikeToNewIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SetLikeToNewIntranetResponse" message="tns:IService_SetLikeToNewIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentsByNewIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetCommentsByNewIntranet" message="tns:IService_GetCommentsByNewIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetCommentsByNewIntranetResponse" message="tns:IService_GetCommentsByNewIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCommentToNewIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SetCommentToNewIntranet" message="tns:IService_SetCommentToNewIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SetCommentToNewIntranetResponse" message="tns:IService_SetCommentToNewIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetHideCommentIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SetHideCommentIntranet" message="tns:IService_SetHideCommentIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SetHideCommentIntranetResponse" message="tns:IService_SetHideCommentIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAnswerToCommentIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SetAnswerToCommentIntranet" message="tns:IService_SetAnswerToCommentIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SetAnswerToCommentIntranetResponse" message="tns:IService_SetAnswerToCommentIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetLikeToCommentIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SetLikeToCommentIntranet" message="tns:IService_SetLikeToCommentIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SetLikeToCommentIntranetResponse" message="tns:IService_SetLikeToCommentIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetViewsToNewIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetViewsToNewIntranet" message="tns:IService_GetViewsToNewIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetViewsToNewIntranetResponse" message="tns:IService_GetViewsToNewIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SendEmailIntranet" message="tns:IService_SendEmailIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SendEmailIntranetResponse" message="tns:IService_SendEmailIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchEmailIntranet">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SearchEmailIntranet" message="tns:IService_SearchEmailIntranet_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/SearchEmailIntranetResponse" message="tns:IService_SearchEmailIntranet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllThemes">
+      <wsdl:input wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetAllThemes" message="tns:IService_GetAllThemes_InputMessage" />
+      <wsdl:output wsaw:Action="urn:MBCP/Intranet/WCF/NewsTools/IService/GetAllThemesResponse" message="tns:IService_GetAllThemes_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetListNewsIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/GetListNewsIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageOrVideo">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/GetImageOrVideo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/GetNewIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPopupIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/GetPopupIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MailMeIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/MailMeIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSocialNewIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/GetSocialNewIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetLikeToNewIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/SetLikeToNewIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentsByNewIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/GetCommentsByNewIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCommentToNewIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/SetCommentToNewIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetHideCommentIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/SetHideCommentIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAnswerToCommentIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/SetAnswerToCommentIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetLikeToCommentIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/SetLikeToCommentIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewsToNewIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/GetViewsToNewIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/SendEmailIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchEmailIntranet">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/SearchEmailIntranet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllThemes">
+      <soap:operation soapAction="urn:MBCP/Intranet/WCF/NewsTools/IService/GetAllThemes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AxisValuesMsg" part="AxisValuesMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+        <soap:header message="tns:SessionsMsg" part="SessionsMsgPart" use="literal" namespace="urn:/microsoft/multichannelframework/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="BasicHttpBinding_IService" binding="tns:BasicHttpBinding_IService">
+      <soap:address location="http://10.103.115.97:8090/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

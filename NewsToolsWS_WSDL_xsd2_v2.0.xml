@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices">
+    <xs:import schemaLocation="https://github.com/Antonio-Ramos-Fernandes/NewsTools.git/NewsToolsWS_WSDL_xsd3_v2.0.xml" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <xs:complexType name="ListNewsIntranet">
+        <xs:sequence>
+            <xs:element name="listNewsField" nillable="true" type="tns:ArrayOfNewIntranet"/>
+            <xs:element name="offsetField" nillable="true" type="xs:string"/>
+            <xs:element name="requestIdField" nillable="true" type="xs:string"/>
+            <xs:element name="resultsReturnedField" type="xs:int"/>
+            <xs:element name="statusField" type="xs:boolean"/>
+            <xs:element name="statusMessageField" nillable="true" type="xs:string"/>
+            <xs:element name="timestampField" type="xs:dateTime"/>
+            <xs:element name="totalResultsField" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ListNewsIntranet" nillable="true" type="tns:ListNewsIntranet"/>
+    <xs:complexType name="ArrayOfNewIntranet">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="NewIntranet" nillable="true" type="tns:NewIntranet"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfNewIntranet" nillable="true" type="tns:ArrayOfNewIntranet"/>
+    <xs:complexType name="NewIntranet">
+        <xs:sequence>
+            <xs:element name="contentField" nillable="true" type="xs:string"/>
+            <xs:element name="disclaimerField" nillable="true" type="xs:string"/>
+            <xs:element name="gUIDField" nillable="true" type="xs:string"/>
+            <xs:element name="hyperLinkField" nillable="true" type="xs:string"/>
+            <xs:element name="idField" type="xs:int"/>
+            <xs:element name="imageTopAPPField" nillable="true" type="tns:ImageOrVideo"/>
+            <xs:element name="priorityField" nillable="true" type="xs:string"/>
+            <xs:element name="schedulingStartDateField" type="xs:dateTime"/>
+            <xs:element name="slideShowImgsField" nillable="true" type="tns:ArrayOfImageOrVideo"/>
+            <xs:element name="themesField" nillable="true" type="q1:ArrayOfstring"
+                xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+                <xs:element name="titleField" nillable="true" type="xs:string"/>
+                <xs:element name="totalcommentsField" nillable="true" type="xs:int"/>
+                <xs:element name="totallikesField" nillable="true" type="xs:int"/>
+                <xs:element name="totalshareField" nillable="true" type="xs:int"/>
+                <xs:element name="totalviewsField" nillable="true" type="xs:int"/>
+                <xs:element name="videoAPPField" nillable="true" type="tns:ImageOrVideo"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:element name="NewIntranet" nillable="true" type="tns:NewIntranet"/>
+        <xs:complexType name="ImageOrVideo">
+            <xs:sequence>
+                <xs:element name="contentByteField" nillable="true" type="xs:base64Binary"/>
+                <xs:element name="extensionField" nillable="true" type="xs:string"/>
+                <xs:element name="urlField" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:element name="ImageOrVideo" nillable="true" type="tns:ImageOrVideo"/>
+        <xs:complexType name="ArrayOfImageOrVideo">
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="ImageOrVideo" nillable="true" type="tns:ImageOrVideo"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:element name="ArrayOfImageOrVideo" nillable="true" type="tns:ArrayOfImageOrVideo"/>
+        <xs:complexType name="Popup">
+            <xs:sequence>
+                <xs:element name="gUIDNewField" nillable="true" type="xs:string"/>
+                <xs:element name="idNewField" type="xs:int"/>
+                <xs:element name="imageTopAPPField" nillable="true" type="tns:ImageOrVideo"/>
+                <xs:element name="pageContentField" nillable="true" type="xs:string"/>
+                <xs:element name="schedulingStartDateField" nillable="true" type="xs:dateTime"/>
+                <xs:element name="urlNewField" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:element name="Popup" nillable="true" type="tns:Popup"/>
+        <xs:complexType name="NewViewInit">
+            <xs:sequence>
+                <xs:element name="nCommentsField" nillable="true" type="xs:int"/>
+                <xs:element name="nSharesField" nillable="true" type="xs:int"/>
+                <xs:element name="nViewsField" nillable="true" type="xs:int"/>
+                <xs:element name="nVotesField" nillable="true" type="xs:int"/>
+                <xs:element name="voteNewField" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:element name="NewViewInit" nillable="true" type="tns:NewViewInit"/>
+        <xs:complexType name="ArrayOfComentario">
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="Comentario" nillable="true" type="tns:Comentario"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:element name="ArrayOfComentario" nillable="true" type="tns:ArrayOfComentario"/>
+        <xs:complexType name="Comentario">
+            <xs:sequence>
+                <xs:element name="areaAnswerField" nillable="true" type="xs:string"/>
+                <xs:element name="aswerCommentField" nillable="true" type="tns:ArrayOfComentario"/>
+                <xs:element name="contentField" nillable="true" type="xs:string"/>
+                <xs:element name="currentUserNameField" nillable="true" type="xs:string"/>
+                <xs:element name="iDAswerField" type="xs:long"/>
+                <xs:element name="idField" type="xs:long"/>
+                <xs:element name="levelVisibleField" type="xs:int"/>
+                <xs:element name="meVoteField" type="xs:boolean"/>
+                <xs:element name="modifyDateField" nillable="true" type="xs:dateTime"/>
+                <xs:element name="permitAnswerField" type="xs:boolean"/>
+                <xs:element name="userNameField" nillable="true" type="xs:string"/>
+                <xs:element name="userUrlFotoField" nillable="true" type="xs:string"/>
+                <xs:element name="visibleField" nillable="true" type="xs:boolean"/>
+                <xs:element name="votosField" type="xs:int"/>
+                <xs:element name="xNUCField" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:element name="Comentario" nillable="true" type="tns:Comentario"/>
+        <xs:complexType name="ArrayOfUserEmail">
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="UserEmail" nillable="true" type="tns:UserEmail"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:element name="ArrayOfUserEmail" nillable="true" type="tns:ArrayOfUserEmail"/>
+        <xs:complexType name="UserEmail">
+            <xs:sequence>
+                <xs:element name="emailField" nillable="true" type="xs:string"/>
+                <xs:element name="nameField" nillable="true" type="xs:string"/>
+                <xs:element name="xNucField" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:element name="UserEmail" nillable="true" type="tns:UserEmail"/>
+    </xs:schema>

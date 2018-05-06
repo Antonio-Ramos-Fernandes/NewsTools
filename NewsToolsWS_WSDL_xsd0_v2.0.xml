@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="urn:MBCP/Intranet/WCF/NewsTools"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="urn:MBCP/Intranet/WCF/NewsTools">
+    <xs:import schemaLocation="https://github.com/Antonio-Ramos-Fernandes/NewsTools.git/NewsToolsWS_WSDL_xsd2_v2.0.xml" namespace="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+    <xs:import schemaLocation="https://github.com/Antonio-Ramos-Fernandes/NewsTools.git/NewsToolsWS_WSDL_xsd3_v2.0.xml" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <xs:element name="GetListNewsIntranet">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="channel" type="xs:int"/>
+                <xs:element minOccurs="0" name="typeSearch" type="xs:int"/>
+                <xs:element minOccurs="0" name="titleSearch" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="dateBegin" type="xs:dateTime"/>
+                <xs:element minOccurs="0" name="dateEnd" type="xs:dateTime"/>
+                <xs:element minOccurs="0" name="theme" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="offset" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="limit" type="xs:unsignedInt"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetListNewsIntranetResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetListNewsIntranetResult" nillable="true" type="q1:ListNewsIntranet"
+                    xmlns:q1="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+        <xs:element name="GetImageOrVideo">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="fullUrl" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="xNuc" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+        <xs:element name="GetImageOrVideoResponse">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="GetImageOrVideoResult" nillable="true" type="q2:ImageOrVideo"
+                        xmlns:q2="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetNewIntranet">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="channel" type="xs:int"/>
+                        <xs:element minOccurs="0" name="xNuc" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetNewIntranetResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetNewIntranetResult" nillable="true" type="q3:NewIntranet"
+                            xmlns:q3="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="GetPopupIntranet">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                            <xs:element minOccurs="0" name="channel" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="GetPopupIntranetResponse">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="GetPopupIntranetResult" nillable="true" type="q4:Popup"
+                                xmlns:q4="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="MailMeIntranet">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                                <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                                <xs:element minOccurs="0" name="maillist" nillable="true" type="q5:ArrayOfstring"
+                                    xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+                                    <xs:element minOccurs="0" name="channel" type="xs:int"/>
+                                    <xs:element minOccurs="0" name="xNuc" nillable="true" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="MailMeIntranetResponse">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element minOccurs="0" name="MailMeIntranetResult" type="xs:boolean"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="GetSocialNewIntranet">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                                    <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                                    <xs:element minOccurs="0" name="channel" type="xs:int"/>
+                                    <xs:element minOccurs="0" name="xnuc" nillable="true" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="GetSocialNewIntranetResponse">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element minOccurs="0" name="GetSocialNewIntranetResult" nillable="true" type="q6:NewViewInit"
+                                        xmlns:q6="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="SetLikeToNewIntranet">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                                        <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                                        <xs:element minOccurs="0" name="channel" type="xs:int"/>
+                                        <xs:element minOccurs="0" name="xnuc" nillable="true" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="SetLikeToNewIntranetResponse">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element minOccurs="0" name="SetLikeToNewIntranetResult" nillable="true" type="q7:NewViewInit"
+                                            xmlns:q7="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="GetCommentsByNewIntranet">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                                            <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string"/>
+                                            <xs:element minOccurs="0" name="channel" type="xs:int"/>
+                                            <xs:element minOccurs="0" name="xnuc" nillable="true" type="xs:string"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="GetCommentsByNewIntranetResponse">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element minOccurs="0" name="GetCommentsByNewIntranetResult" nillable="true" type="q8:ArrayOfComentario"
+                                                xmlns:q8="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="SetCommentToNewIntranet">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                                                <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                                                <xs:element minOccurs="0" name="strComment" nillable="true" type="xs:string"/>
+                                                <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string"/>
+                                                <xs:element minOccurs="0" name="channel" type="xs:int"/>
+                                                <xs:element minOccurs="0" name="xnuc" nillable="true" type="xs:string"/>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="SetCommentToNewIntranetResponse">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element minOccurs="0" name="SetCommentToNewIntranetResult" nillable="true" type="q9:ArrayOfComentario"
+                                                    xmlns:q9="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="SetHideCommentIntranet">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                                                    <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                                                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                                                    <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string"/>
+                                                    <xs:element minOccurs="0" name="channel" type="xs:int"/>
+                                                    <xs:element minOccurs="0" name="xnuc" nillable="true" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="SetHideCommentIntranetResponse">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element minOccurs="0" name="SetHideCommentIntranetResult" nillable="true" type="q10:ArrayOfComentario"
+                                                        xmlns:q10="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+                                                    </xs:sequence>
+                                                </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="SetAnswerToCommentIntranet">
+                                                <xs:complexType>
+                                                    <xs:sequence>
+                                                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                                                        <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                                                        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                                                        <xs:element minOccurs="0" name="strComment" nillable="true" type="xs:string"/>
+                                                        <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string"/>
+                                                        <xs:element minOccurs="0" name="channel" type="xs:int"/>
+                                                        <xs:element minOccurs="0" name="xnuc" nillable="true" type="xs:string"/>
+                                                    </xs:sequence>
+                                                </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="SetAnswerToCommentIntranetResponse">
+                                                <xs:complexType>
+                                                    <xs:sequence>
+                                                        <xs:element minOccurs="0" name="SetAnswerToCommentIntranetResult" nillable="true" type="q11:ArrayOfComentario"
+                                                            xmlns:q11="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+                                                        </xs:sequence>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="SetLikeToCommentIntranet">
+                                                    <xs:complexType>
+                                                        <xs:sequence>
+                                                            <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                                                            <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                                                            <xs:element minOccurs="0" name="idComent" nillable="true" type="xs:string"/>
+                                                            <xs:element minOccurs="0" name="channel" type="xs:int"/>
+                                                            <xs:element minOccurs="0" name="xnuc" nillable="true" type="xs:string"/>
+                                                        </xs:sequence>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="SetLikeToCommentIntranetResponse">
+                                                    <xs:complexType>
+                                                        <xs:sequence>
+                                                            <xs:element minOccurs="0" name="SetLikeToCommentIntranetResult" nillable="true" type="q12:NewViewInit"
+                                                                xmlns:q12="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="GetViewsToNewIntranet">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                                                                <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                                                                <xs:element minOccurs="0" name="channel" type="xs:int"/>
+                                                                <xs:element minOccurs="0" name="xnuc" nillable="true" type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="GetViewsToNewIntranetResponse">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element minOccurs="0" name="GetViewsToNewIntranetResult" type="xs:int"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="SendEmailIntranet">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element minOccurs="0" name="allEmails" nillable="true" type="xs:string"/>
+                                                                <xs:element minOccurs="0" name="textoBody" nillable="true" type="xs:string"/>
+                                                                <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                                                                <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                                                                <xs:element minOccurs="0" name="sendToMe" nillable="true" type="xs:string"/>
+                                                                <xs:element minOccurs="0" name="xNuc" nillable="true" type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="SendEmailIntranetResponse">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element minOccurs="0" name="SendEmailIntranetResult" nillable="true" type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="SearchEmailIntranet">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element minOccurs="0" name="emailORxNuc" nillable="true" type="xs:string"/>
+                                                                <xs:element minOccurs="0" name="xNuc" nillable="true" type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="SearchEmailIntranetResponse">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element minOccurs="0" name="SearchEmailIntranetResult" nillable="true" type="q13:ArrayOfUserEmail"
+                                                                    xmlns:q13="http://schemas.datacontract.org/2004/07/MBCP.Intranet.WCF.NewsToolsServices"/>
+                                                                </xs:sequence>
+                                                            </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="GetAllThemes">
+                                                            <xs:complexType>
+                                                                <xs:sequence>
+                                                                    <xs:element minOccurs="0" name="urlWebNews" nillable="true" type="xs:string"/>
+                                                                    <xs:element minOccurs="0" name="xNuc" nillable="true" type="xs:string"/>
+                                                                </xs:sequence>
+                                                            </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="GetAllThemesResponse">
+                                                            <xs:complexType>
+                                                                <xs:sequence>
+                                                                    <xs:element minOccurs="0" name="GetAllThemesResult" nillable="true" type="q14:ArrayOfstring"
+                                                                        xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+                                                                    </xs:sequence>
+                                                                </xs:complexType>
+                                                            </xs:element>
+                                                        </xs:schema>
